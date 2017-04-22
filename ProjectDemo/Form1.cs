@@ -52,7 +52,7 @@ namespace ProjectDemo
             //{
             //    MessageBox.Show("打开成功");
             //}
-            string path = "d:\\test.dwg";
+            //string path = "d:\\test.dwg";
            // OperateDWG.openDWG(path);
         }
 
