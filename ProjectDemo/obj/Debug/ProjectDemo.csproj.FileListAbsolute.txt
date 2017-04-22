@@ -15,3 +15,31 @@ C:\Users\64426\documents\visual studio 2017\Projects\ProjectDemo\ProjectDemo\bin
 C:\Users\64426\documents\visual studio 2017\Projects\ProjectDemo\ProjectDemo\bin\Debug\Microsoft.DirectX.Direct3D.xml
 C:\Users\64426\documents\visual studio 2017\Projects\ProjectDemo\ProjectDemo\bin\Debug\Microsoft.DirectX.Direct3DX.xml
 C:\Users\64426\documents\visual studio 2017\Projects\ProjectDemo\ProjectDemo\obj\Debug\ProjectDemo.ShowConnect.resources
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\ProjectDemo.exe.config
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\ProjectDemo.exe
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\ProjectDemo.pdb
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\Microsoft.DirectX.Direct3D.dll
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\Microsoft.DirectX.Direct3DX.dll
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\Microsoft.DirectX.DirectInput.dll
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\Microsoft.DirectX.dll
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\Microsoft.DirectX.xml
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\Microsoft.DirectX.Direct3D.xml
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\Microsoft.DirectX.Direct3DX.xml
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\Microsoft.DirectX.DirectInput.xml
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\TD_Alloc_3.03_9.dll
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\TD_DbRoot_3.03_9.dll
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\TD_Db_3.03_9.dll
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\TD_DynBlocks_3.03_9.tx
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\TD_Ge_3.03_9.dll
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\TD_Gi_3.03_9.dll
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\TD_Gs_3.03_9.dll
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\TD_Root_3.03_9.dll
+D:\MyProjects\ProjectDemo\ProjectDemo\bin\Debug\TD_SpatialIndex_3.03_9.dll
+D:\MyProjects\ProjectDemo\ProjectDemo\obj\Debug\ProjectDemo.csprojResolveAssemblyReference.cache
+D:\MyProjects\ProjectDemo\ProjectDemo\obj\Debug\ProjectDemo.csproj.ResolveComReference.cache
+D:\MyProjects\ProjectDemo\ProjectDemo\obj\Debug\ProjectDemo.Form1.resources
+D:\MyProjects\ProjectDemo\ProjectDemo\obj\Debug\ProjectDemo.Properties.Resources.resources
+D:\MyProjects\ProjectDemo\ProjectDemo\obj\Debug\ProjectDemo.ShowConnect.resources
+D:\MyProjects\ProjectDemo\ProjectDemo\obj\Debug\ProjectDemo.csproj.GenerateResource.Cache
+D:\MyProjects\ProjectDemo\ProjectDemo\obj\Debug\ProjectDemo.exe
+D:\MyProjects\ProjectDemo\ProjectDemo\obj\Debug\ProjectDemo.pdb
