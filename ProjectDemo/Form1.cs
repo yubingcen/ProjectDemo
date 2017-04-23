@@ -29,18 +29,19 @@ namespace ProjectDemo
         private void Form1_Load(object sender, EventArgs e)
         {
             //定义表结构
-            cabledt.Columns.Add("Id", typeof(System.Int32));//列名  列所在数据类型
-            cabledt.Columns.Add("Name", typeof(System.String));
-            cabledt.Columns.Add("age", typeof(System.String));
-            //添加新行
-            for (int i = 0; i <= 3; i++)
-            {
-                DataRow dr = cabledt.NewRow();   //行
-                dr[0] = i;
-                dr[1] = "wang" + i;
-                dr[2] = "5" + i;
-                cabledt.Rows.Add(dr);    //将行添加到DataTabl 格中```
-            }
+            cabledt.Columns.Add("线缆名", typeof(System.Int32));//列名  列所在数据类型
+            cabledt.Columns.Add("型号", typeof(System.String));
+            cabledt.Columns.Add("接口型号", typeof(System.String));
+            DataRow dr = cabledt.NewRow();   //行
+            ////添加新行
+            //for (int i = 0; i <= 3; i++)
+            //{
+            //    DataRow dr = cabledt.NewRow();   //行
+            //    dr[0] = i;
+            //    dr[1] = "wang" + i;
+            //    dr[2] = "5" + i;
+            //    cabledt.Rows.Add(dr);    //将行添加到DataTabl 格中```
+            //}
             dataGridView1.DataSource = cabledt;   //控件.DataSource = ……（该控件可以直接绑定一个DataTable这样的表）
         }
 
