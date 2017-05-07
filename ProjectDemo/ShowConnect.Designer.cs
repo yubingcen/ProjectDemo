@@ -37,11 +37,11 @@ namespace ProjectDemo
             // 
             // show1
             // 
-            this.show1.Location = new System.Drawing.Point(385, 35);
+            this.show1.Location = new System.Drawing.Point(12, 12);
             this.show1.Name = "show1";
             this.show1.Size = new System.Drawing.Size(75, 23);
             this.show1.TabIndex = 2;
-            this.show1.Text = "加载第一个";
+            this.show1.Text = "加载线缆头";
             this.show1.UseVisualStyleBackColor = true;
             this.show1.Click += new System.EventHandler(this.show1_Click);
             // 
@@ -49,7 +49,7 @@ namespace ProjectDemo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 554);
+            this.ClientSize = new System.Drawing.Size(1026, 625);
             this.Controls.Add(this.show1);
             this.Name = "ShowConnect";
             this.Text = "ShowConnect";

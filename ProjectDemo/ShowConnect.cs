@@ -17,13 +17,16 @@ namespace ProjectDemo
         //Microsoft.DirectX.Direct3D.Device  device;
         #region
         //保存3D文件
-        private Mesh mesh = null;
+        private Mesh[] mesh = null;
         //设备
         private Device device = null;
         //材质
         private Material[] meshMaterials;
         //纹理
         private Texture[] meshTextures;
+        //定义模型网格的位置
+        private Matrix[] meshPosition;
+
         //获取当前程序的Debug路径
         string path = System.Windows.Forms.Application.StartupPath;
         //角度
@@ -39,6 +42,7 @@ namespace ProjectDemo
         public ShowConnect()
         {
             InitializeComponent();
+            InitializeGraphics();
         }
 
         //初始化图形设备
@@ -52,10 +56,20 @@ namespace ProjectDemo
             presentParams.SwapEffect = SwapEffect.Discard;
             presentParams.AutoDepthStencilFormat = DepthFormat.D16;
             presentParams.EnableAutoDepthStencil = true;
+            presentParams.PresentationInterval = PresentInterval.Immediate;
+
             //创建设备
             //因为我显示在panel1中，所以device中的第三个变量是panel的名字
             device = new Device(0, DeviceType.Hardware, this,
                 CreateFlags.SoftwareVertexProcessing, presentParams);
+
+            //创建两个模型
+            mesh = new Mesh[2];
+            //定义位置
+            meshPosition = new Matrix[2];
+            meshPosition[0] = Matrix.Translation(-20f, 0f, 0f);
+            meshPosition[1] = Matrix.Translation(20f, 0f, 0f);
+
             //我的3D文件在Debug中的Model文件中，因此temp获取了3D模型的地址
             string temp = path;
             temp = temp + "\\Model\\Model.X";
@@ -72,25 +86,28 @@ namespace ProjectDemo
             //载入
             try
             {
-                mesh = Mesh.FromFile(file, MeshFlags.Managed, device, out mtrl);
-                //有材质的话，则载入
-                if ((mtrl != null) && (mtrl.Length > 0))
+                for (int num = 0; num < mesh.Length; num++)
                 {
-                    //这两个就是前面定义的全局变量，保存材质和纹理
-                    meshMaterials = new Material[mtrl.Length];
-                    meshTextures = new Texture[mtrl.Length];
-
-                    for (int i = 0; i < mtrl.Length; ++i)
+                    mesh[num] = Mesh.FromFile(file, MeshFlags.Managed, device, out mtrl);
+                    //有材质的话，则载入
+                    if ((mtrl != null) && (mtrl.Length > 0))
                     {
-                        /*当前的temp是Debug下的Model文件，
-                        *Model文件中有保存纹理和材质的文件
-                         */
-                        string temp = path + "\\Model\\";
-                        meshMaterials[i] = mtrl[i].Material3D;
-                        if ((mtrl[i].TextureFilename != null)
-                            && mtrl[i].TextureFilename != string.Empty)
+                        //这两个就是前面定义的全局变量，保存材质和纹理
+                        meshMaterials = new Material[mtrl.Length];
+                        meshTextures = new Texture[mtrl.Length];
+
+                        for (int i = 0; i < mtrl.Length; ++i)
                         {
-                            meshTextures[i] = TextureLoader.FromFile(device, temp + mtrl[i].TextureFilename);
+                            /*当前的temp是Debug下的Model文件，
+                            *Model文件中有保存纹理和材质的文件
+                             */
+                            string temp = path + "\\Model\\";
+                            meshMaterials[i] = mtrl[i].Material3D;
+                            if ((mtrl[i].TextureFilename != null)
+                                && mtrl[i].TextureFilename != string.Empty)
+                            {
+                                meshTextures[i] = TextureLoader.FromFile(device, temp + mtrl[i].TextureFilename);
+                            }
                         }
                     }
                 }
@@ -107,13 +124,6 @@ namespace ProjectDemo
             //(float)Math.PI/12设置对象大小
             device.Transform.Projection = Matrix.PerspectiveFovLH((float)Math.PI / 12, this.Width / this.Height, 0.80f, 10000.0f);
             device.Transform.View = Matrix.LookAtLH(CamPostion, CamTarget, new Vector3(0, 1, 0));
-            device.RenderState.Ambient = Color.Black;
-            device.Lights[0].Type = LightType.Directional;
-            device.Lights[0].Diffuse = Color.AntiqueWhite;
-            device.Lights[0].Direction = new Vector3(1, 0, 0);
-            device.Lights[0].Update();
-            device.Lights[0].Enabled = true;
-
         }
         //绘制mesh的材质和纹理
         private void DrawMesh(float yaw, float pitch, float roll, float x, float y, float z)
@@ -127,7 +137,7 @@ namespace ProjectDemo
                 //设置纹理
                 device.SetTexture(0, meshTextures[i]);
                 //绘制
-                mesh.DrawSubset(i);
+                mesh[0].DrawSubset(i);
             }
         }
 
@@ -135,27 +145,68 @@ namespace ProjectDemo
         {
             if (device == null)
                 return;
-            device.Clear(ClearFlags.Target | ClearFlags.ZBuffer, Color.SkyBlue, 1.0f, 1);
-
-            //device.Clear(ClearFlags.Target, System.Drawing.Color.Black, 1.0f, 0);
             SetupCamera();
+            device.Clear(ClearFlags.Target | ClearFlags.ZBuffer, Color.DarkSlateBlue, 1.0f, 1);
+            //device.Clear(ClearFlags.Target, System.Drawing.Color.Black, 1.0f, 0);
             device.BeginScene();
 
+            // 灯光
+            device.RenderState.Lighting = true;
+            //设置三种不同类型的灯光
+            LightsCollection lightsCollection = device.Lights;
+            //第一个灯光为点光源
+            lightsCollection[0].Type = LightType.Point;
+            lightsCollection[0].Diffuse = System.Drawing.Color.Green;
+            lightsCollection[0].Position = new Vector3(-10.0f, 10.0f, 10.0f);
+            lightsCollection[0].Range = 50.0f;
+            lightsCollection[0].Attenuation1 = 0.1f;
+            lightsCollection[0].Enabled = true; //打开灯光
+            //第二个灯光为平行光
+            lightsCollection[1].Type = LightType.Directional;
+            lightsCollection[1].Diffuse = System.Drawing.Color.Green;
+            lightsCollection[1].Direction = new Vector3(0.0f, -1.0f, 1.0f);
+            lightsCollection[1].Enabled = true; //打开灯光
+            //第三个灯光为聚光灯
+            lightsCollection[2].Type = LightType.Spot;
+            lightsCollection[2].Diffuse = System.Drawing.Color.Green;
+            lightsCollection[2].Position = new Vector3(5.0f, 5.0f, 5.0f);
+            lightsCollection[2].Direction = new Vector3(0.0f, -1.0f, 1.0f);
+            lightsCollection[2].Range = 50.0f;
+            lightsCollection[2].Attenuation1 = 0.1f;
+            lightsCollection[2].OuterConeAngle = 45f;
+            lightsCollection[2].Enabled = true; //打开灯光
+
+            device.RenderState.CullMode = Cull.None;
+
             Material boxMaterial = new Material();
-            boxMaterial.Ambient = Color.Pink;
-            boxMaterial.Diffuse = Color.White;
+            //boxMaterial.Ambient = Color.Pink;
+            //boxMaterial.Diffuse = Color.White;
+            boxMaterial.Ambient = Color.FromArgb(0, 10, 10, 10);//设置环境光 
+            boxMaterial.Diffuse = Color.LightGreen;//设置漫反射 
+            boxMaterial.Emissive = Color.FromArgb(0, 0, 0, 0);//设置自发光 
+            boxMaterial.Specular = Color.DarkRed;//设置镜面反射光
+            boxMaterial.SpecularSharpness = 15.0f;//反射高光清晰度 
+
             device.Material = boxMaterial;
             device.Transform.World = Matrix.Translation(0, 50, 0);
             device.Transform.World = Matrix.Identity;
+
+            // 可以自动旋转
             //DrawMesh(angle / (float)Math.PI, angle / (float)Math.PI * 2.0f, angle / (float)Math.PI / 4.0f, 0.0f, 0.0f, 0.0f);
-            for (int i = 0; i < meshMaterials.Length; ++i)
+
+            for (int num = 0; num < mesh.Length; num++)
             {
-                //设置材质
-                device.Material = meshMaterials[i];
-                //设置纹理
-                device.SetTexture(0, meshTextures[i]);
+                for (int i = 0; i < meshMaterials.Length; ++i)
+                {
+                    //设置材质
+                    device.Material = meshMaterials[i];
+                    //设置纹理
+                    device.SetTexture(0, meshTextures[i]);
+                }
                 //绘制
-                mesh.DrawSubset(i);
+                //设置当前世界矩阵
+                device.Transform.World = meshPosition[num];
+                mesh[num].DrawSubset(0);
             }
 
             //mesh.DrawSubset(0);
@@ -242,16 +293,12 @@ namespace ProjectDemo
 
         private void show1_Click(object sender, EventArgs e)
         {
-            InitializeGraphics();
-
             while (true) //设置一个循环用于实时更新渲染状态
             {
                 Render();
                 Application.DoEvents(); //处理键盘鼠标等输入事件
             }
-
         }
-
 
     }
 }
