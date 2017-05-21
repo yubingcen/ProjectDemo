@@ -89,7 +89,7 @@ namespace ProjectDemo
                 ts.Commit();
             }
             db.SaveAs((string)o_cadFile, DwgVersion.Current);
-            const string progID = "AutoCAD.Application.18.2";
+            const string progID = "AutoCAD.Application.18.0";
             AcadApplication acApp = null;
             try
             {
