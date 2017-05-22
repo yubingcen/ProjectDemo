@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFile = new System.Windows.Forms.ToolStripMenuItem();
             this.readExcel = new System.Windows.Forms.ToolStripMenuItem();
             this.exportCAD = new System.Windows.Forms.ToolStripMenuItem();
             this.exportWord = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.线缆连接ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openConnectView = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -42,7 +44,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ShowThumb = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.MenuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -100,6 +101,13 @@
             this.exportWord.Text = "导出Word";
             this.exportWord.Click += new System.EventHandler(this.exportWord_Click);
             // 
+            // MenuExit
+            // 
+            this.MenuExit.Name = "MenuExit";
+            this.MenuExit.Size = new System.Drawing.Size(177, 22);
+            this.MenuExit.Text = "退出";
+            this.MenuExit.Click += new System.EventHandler(this.MenuExit_Click);
+            // 
             // 线缆连接ToolStripMenuItem
             // 
             this.线缆连接ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -111,7 +119,7 @@
             // openConnectView
             // 
             this.openConnectView.Name = "openConnectView";
-            this.openConnectView.Size = new System.Drawing.Size(152, 22);
+            this.openConnectView.Size = new System.Drawing.Size(148, 22);
             this.openConnectView.Text = "打开连接预览";
             this.openConnectView.Click += new System.EventHandler(this.openConnectView_Click);
             // 
@@ -149,20 +157,13 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(420, 229);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 25);
             this.button1.TabIndex = 5;
             this.button1.Text = "在CAD中打开";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.openInCAD_Click);
-            // 
-            // MenuExit
-            // 
-            this.MenuExit.Name = "MenuExit";
-            this.MenuExit.Size = new System.Drawing.Size(177, 22);
-            this.MenuExit.Text = "退出";
-            this.MenuExit.Click += new System.EventHandler(this.MenuExit_Click);
             // 
             // Form1
             // 
@@ -174,10 +175,11 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "电缆设计管理软件";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Exit);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
