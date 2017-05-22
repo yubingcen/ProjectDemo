@@ -131,7 +131,9 @@ namespace ProjectDemo
         private void ShowThumb_Click(object sender, EventArgs e)
         {
             ViewDWG viewDwg = new ViewDWG();
-            string path = "C:\\毕设资料\\CAD二次开发\\XXXXDCW04-3000-00.dwg";
+            // string path = "d:\\毕设资料\\CAD二次开发\\XXXXDCW04-3000-00.dwg";
+            string path = "d:\\测试\\测试1\\XXXXDCW04-3000-00.dwg";
+
             pictureBox1.Image = viewDwg.ShowDWG(1000,2000, path);
 
         }

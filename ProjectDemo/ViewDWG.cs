@@ -136,7 +136,7 @@ namespace ProjectDemo
             Bitmap bitmap = new Bitmap(image);
             int Height = bitmap.Height;
             int Width = bitmap.Width;
-            MessageBox.Show("高" + Height + "宽" + Width + "设定高" + PHeight + "设定宽" + Pwidth);
+            // MessageBox.Show("高" + Height + "宽" + Width + "设定高" + PHeight + "设定宽" + Pwidth);
             Bitmap newbitmap = new Bitmap(Width, Height);
             Bitmap oldbitmap = (Bitmap)bitmap;
             Color pixel;

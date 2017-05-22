@@ -25,9 +25,9 @@ namespace ProjectDemo
         static object miss = System.Reflection.Missing.Value;
         public void exprotCAD()
         {
-            object filepath = "c:\\test\\1.docx";
+            object filepath = "d:\\1.docx";
 
-            string o_cadFile = "c:\\test\\test.dwg";
+            string o_cadFile = "d:\\test.dwg";
             // object o_cadFile = (object)filepath;
             Teigha.Runtime.Services trs = new Services();
 
