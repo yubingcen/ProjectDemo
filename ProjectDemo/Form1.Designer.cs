@@ -42,6 +42,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ShowThumb = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.MenuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -55,8 +56,7 @@
             this.线缆连接ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(12, 4, 0, 4);
-            this.menuStrip1.Size = new System.Drawing.Size(1018, 43);
+            this.menuStrip1.Size = new System.Drawing.Size(509, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -66,36 +66,37 @@
             this.openFile,
             this.readExcel,
             this.exportCAD,
-            this.exportWord});
+            this.exportWord,
+            this.MenuExit});
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
-            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(74, 35);
+            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.文件ToolStripMenuItem.Text = "文件";
             // 
             // openFile
             // 
             this.openFile.Name = "openFile";
-            this.openFile.Size = new System.Drawing.Size(314, 38);
+            this.openFile.Size = new System.Drawing.Size(177, 22);
             this.openFile.Text = "读取CAD文件";
             this.openFile.Click += new System.EventHandler(this.openFile_Click);
             // 
             // readExcel
             // 
             this.readExcel.Name = "readExcel";
-            this.readExcel.Size = new System.Drawing.Size(314, 38);
+            this.readExcel.Size = new System.Drawing.Size(177, 22);
             this.readExcel.Text = "读取Excel文件数据";
             this.readExcel.Click += new System.EventHandler(this.readExcel_Click);
             // 
             // exportCAD
             // 
             this.exportCAD.Name = "exportCAD";
-            this.exportCAD.Size = new System.Drawing.Size(314, 38);
+            this.exportCAD.Size = new System.Drawing.Size(177, 22);
             this.exportCAD.Text = "导出CAD";
             this.exportCAD.Click += new System.EventHandler(this.ExportCAD_Click);
             // 
             // exportWord
             // 
             this.exportWord.Name = "exportWord";
-            this.exportWord.Size = new System.Drawing.Size(314, 38);
+            this.exportWord.Size = new System.Drawing.Size(177, 22);
             this.exportWord.Text = "导出Word";
             this.exportWord.Click += new System.EventHandler(this.exportWord_Click);
             // 
@@ -104,13 +105,13 @@
             this.线缆连接ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openConnectView});
             this.线缆连接ToolStripMenuItem.Name = "线缆连接ToolStripMenuItem";
-            this.线缆连接ToolStripMenuItem.Size = new System.Drawing.Size(122, 35);
+            this.线缆连接ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.线缆连接ToolStripMenuItem.Text = "线缆连接";
             // 
             // openConnectView
             // 
             this.openConnectView.Name = "openConnectView";
-            this.openConnectView.Size = new System.Drawing.Size(257, 38);
+            this.openConnectView.Size = new System.Drawing.Size(152, 22);
             this.openConnectView.Text = "打开连接预览";
             this.openConnectView.Click += new System.EventHandler(this.openConnectView_Click);
             // 
@@ -121,28 +122,25 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(24, 78);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 39);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(966, 300);
+            this.dataGridView1.Size = new System.Drawing.Size(483, 150);
             this.dataGridView1.TabIndex = 2;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(24, 392);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 196);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(588, 348);
+            this.pictureBox1.Size = new System.Drawing.Size(294, 174);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
             // ShowThumb
             // 
-            this.ShowThumb.Location = new System.Drawing.Point(840, 392);
-            this.ShowThumb.Margin = new System.Windows.Forms.Padding(6);
+            this.ShowThumb.Location = new System.Drawing.Point(420, 196);
             this.ShowThumb.Name = "ShowThumb";
-            this.ShowThumb.Size = new System.Drawing.Size(150, 46);
+            this.ShowThumb.Size = new System.Drawing.Size(75, 23);
             this.ShowThumb.TabIndex = 4;
             this.ShowThumb.Text = "显示缩略图";
             this.ShowThumb.UseVisualStyleBackColor = true;
@@ -150,30 +148,37 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(840, 458);
+            this.button1.Location = new System.Drawing.Point(420, 229);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 50);
+            this.button1.Size = new System.Drawing.Size(75, 25);
             this.button1.TabIndex = 5;
             this.button1.Text = "在CAD中打开";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.openInCAD_Click);
             // 
+            // MenuExit
+            // 
+            this.MenuExit.Name = "MenuExit";
+            this.MenuExit.Size = new System.Drawing.Size(177, 22);
+            this.MenuExit.Text = "退出";
+            this.MenuExit.Click += new System.EventHandler(this.MenuExit_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1018, 808);
+            this.ClientSize = new System.Drawing.Size(509, 370);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ShowThumb);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Eixt);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Exit);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -200,6 +205,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button ShowThumb;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem MenuExit;
     }
 }
 

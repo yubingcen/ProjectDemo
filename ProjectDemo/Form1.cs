@@ -146,7 +146,7 @@ namespace ProjectDemo
         }
 
         // 程序退出
-        private void Eixt(object sender, FormClosingEventArgs e)
+        private void Exit(object sender, FormClosingEventArgs e)
         {
             DialogResult result;
             result = MessageBox.Show("确定退出程序吗？", "退出", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -157,6 +157,21 @@ namespace ProjectDemo
             else
             {
                 e.Cancel = true;
+            }
+        }
+
+        // 菜单退出
+        private void MenuExit_Click(object sender, EventArgs e)
+        {
+            DialogResult result;
+            result = MessageBox.Show("确定退出程序吗？", "退出", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                Application.ExitThread();
+            }
+            else
+            {
+                // e.Cancel = true;
             }
         }
     }
