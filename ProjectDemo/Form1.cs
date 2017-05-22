@@ -25,6 +25,9 @@ namespace ProjectDemo
 
         //新建表
         System.Data.DataTable cabledt = new System.Data.DataTable();
+        //保存文件
+        string excelFile;
+        string dwgFile;
         // form1加载时给表格加载数据
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -48,13 +51,13 @@ namespace ProjectDemo
 
         private void openFile_Click(object sender, EventArgs e)
         {
-            //OpenFileDialog file = new OpenFileDialog();
-            //if (file.ShowDialog() == DialogResult.OK)
-            //{
-            //    MessageBox.Show("打开成功");
-            //}
+            OpenFileDialog file = new OpenFileDialog();
+            if (file.ShowDialog() == DialogResult.OK)
+            {
+                dwgFile = file.FileName;
+            }
             //string path = "d:\\test.dwg";
-           // OperateDWG.openDWG(path);
+            // OperateDWG.openDWG(path);
         }
 
         public void ExportDataGridViewToWord(System.Data.DataTable srcDgv, SaveFileDialog sfile)
@@ -132,17 +135,26 @@ namespace ProjectDemo
         {
             ViewDWG viewDwg = new ViewDWG();
             // string path = "d:\\毕设资料\\CAD二次开发\\XXXXDCW04-3000-00.dwg";
-            string path = "d:\\测试\\测试1\\XXXXDCW04-3000-00.dwg";
-
-            pictureBox1.Image = viewDwg.ShowDWG(1000,2000, path);
-
+            pictureBox1.Image = viewDwg.ShowDWG(100,200, dwgFile);
         }
 
         private void readExcel_Click(object sender, EventArgs e)
         {
-            string test = "d:\\test.xlsx";
-            cabledt = GetExcelData(test);
-            dataGridView1.DataSource = GetExcelData(test);
+            OpenFileDialog excelfile = new OpenFileDialog();
+            if (excelfile.ShowDialog() == DialogResult.OK)
+            {
+                string exName = Path.GetExtension(excelfile.FileName);
+                if (string.Equals(exName, ".xlsx") || string.Equals(exName, ".xls"))
+                {
+                    excelFile = excelfile.FileName;
+                    cabledt = GetExcelData(excelFile);
+                    dataGridView1.DataSource = GetExcelData(excelFile);
+                }
+                else
+                {
+                    MessageBox.Show("请选择Excel文件");
+                }
+            }
         }
 
         public static System.Data.DataTable GetExcelData(string excelFilePath)
