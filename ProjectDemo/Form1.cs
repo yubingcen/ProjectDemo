@@ -25,9 +25,10 @@ namespace ProjectDemo
 
         //新建表
         System.Data.DataTable cabledt = new System.Data.DataTable();
-        //保存文件
+        //保存文件名
         string excelFile;
         string dwgFile=null;
+
         // form1加载时给表格加载数据
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -48,7 +49,7 @@ namespace ProjectDemo
             dataGridView1.DataSource = cabledt;   //控件.DataSource = ……（该控件可以直接绑定一个DataTable这样的表）
         }
 
-
+        // 读取CAD文件
         private void openFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog file = new OpenFileDialog();
@@ -64,29 +65,23 @@ namespace ProjectDemo
                     MessageBox.Show("请选择.dwg文件");
                 }
             }
-            //string path = "d:\\test.dwg";
-            // OperateDWG.openDWG(path);
         }
 
-        public void ExportDataGridViewToWord(System.Data.DataTable srcDgv, SaveFileDialog sfile)
-        {
-            ExportWord export = new ExportWord();
-            export.ExportDataTableToWord(srcDgv, sfile);
-        }
-        
+        // 导出数据表数据到word
         private void exportWord_Click(object sender, EventArgs e)
         {
-            ExportDataGridViewToWord(cabledt, saveFileDialog);
+            ExportWord export = new ExportWord();
+            export.ExportDataTableToWord(cabledt, saveFileDialog);
         }
 
-
+        // 打开电缆头连接
         private void openConnectView_Click(object sender, EventArgs e)
         {
             Thread th = new Thread(() => { System.Windows.Forms.Application.Run(new ShowConnect()); });
             th.Start();
         }
 
-
+        // 导出CAD文件到word
         private void ExportCAD_Click(object sender, EventArgs e)
         {
             if (dwgFile != null)
@@ -100,6 +95,7 @@ namespace ProjectDemo
             }
         }
 
+        // 显示缩略图
         private void ShowThumb_Click(object sender, EventArgs e)
         {
             if (dwgFile != null)
@@ -114,6 +110,7 @@ namespace ProjectDemo
             }
         }
 
+        // 读取Excel文件数据
         private void readExcel_Click(object sender, EventArgs e)
         {
             OpenFileDialog excelfile = new OpenFileDialog();
@@ -134,7 +131,7 @@ namespace ProjectDemo
         }
 
         
-
+        // 在CAD中打开文件
         private void openInCAD_Click(object sender, EventArgs e)
         {
             if (dwgFile != null)
@@ -148,6 +145,7 @@ namespace ProjectDemo
             }
         }
 
+        // 程序退出
         private void Eixt(object sender, FormClosingEventArgs e)
         {
             DialogResult result;
