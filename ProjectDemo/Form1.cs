@@ -54,7 +54,16 @@ namespace ProjectDemo
             OpenFileDialog file = new OpenFileDialog();
             if (file.ShowDialog() == DialogResult.OK)
             {
-                dwgFile = file.FileName;
+                string exName = Path.GetExtension(file.FileName);
+                if (string.Equals(exName, ".dwg"))
+                {
+                    dwgFile = file.FileName;
+                    MessageBox.Show(dwgFile);
+                }
+                else
+                {
+                    MessageBox.Show("请选择.dwg文件");
+                }
             }
             //string path = "d:\\test.dwg";
             // OperateDWG.openDWG(path);

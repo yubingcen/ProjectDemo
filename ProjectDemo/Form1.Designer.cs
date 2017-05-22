@@ -31,8 +31,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportCAD = new System.Windows.Forms.ToolStripMenuItem();
             this.readExcel = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportCAD = new System.Windows.Forms.ToolStripMenuItem();
             this.exportWord = new System.Windows.Forms.ToolStripMenuItem();
             this.线缆连接ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openConnectView = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,12 +48,14 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem,
             this.线缆连接ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(509, 25);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(12, 4, 0, 4);
+            this.menuStrip1.Size = new System.Drawing.Size(1018, 43);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -65,34 +67,34 @@
             this.exportCAD,
             this.exportWord});
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
-            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(74, 35);
             this.文件ToolStripMenuItem.Text = "文件";
             // 
             // openFile
             // 
             this.openFile.Name = "openFile";
-            this.openFile.Size = new System.Drawing.Size(152, 22);
-            this.openFile.Text = "打开";
+            this.openFile.Size = new System.Drawing.Size(314, 38);
+            this.openFile.Text = "读取CAD文件";
             this.openFile.Click += new System.EventHandler(this.openFile_Click);
-            // 
-            // exportCAD
-            // 
-            this.exportCAD.Name = "exportCAD";
-            this.exportCAD.Size = new System.Drawing.Size(152, 22);
-            this.exportCAD.Text = "导出CAD";
-            this.exportCAD.Click += new System.EventHandler(this.ExportCAD_Click);
             // 
             // readExcel
             // 
             this.readExcel.Name = "readExcel";
-            this.readExcel.Size = new System.Drawing.Size(152, 22);
-            this.readExcel.Text = "读取Excel";
+            this.readExcel.Size = new System.Drawing.Size(314, 38);
+            this.readExcel.Text = "读取Excel文件数据";
             this.readExcel.Click += new System.EventHandler(this.readExcel_Click);
+            // 
+            // exportCAD
+            // 
+            this.exportCAD.Name = "exportCAD";
+            this.exportCAD.Size = new System.Drawing.Size(314, 38);
+            this.exportCAD.Text = "导出CAD";
+            this.exportCAD.Click += new System.EventHandler(this.ExportCAD_Click);
             // 
             // exportWord
             // 
             this.exportWord.Name = "exportWord";
-            this.exportWord.Size = new System.Drawing.Size(152, 22);
+            this.exportWord.Size = new System.Drawing.Size(314, 38);
             this.exportWord.Text = "导出Word";
             this.exportWord.Click += new System.EventHandler(this.exportWord_Click);
             // 
@@ -101,13 +103,13 @@
             this.线缆连接ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openConnectView});
             this.线缆连接ToolStripMenuItem.Name = "线缆连接ToolStripMenuItem";
-            this.线缆连接ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.线缆连接ToolStripMenuItem.Size = new System.Drawing.Size(122, 35);
             this.线缆连接ToolStripMenuItem.Text = "线缆连接";
             // 
             // openConnectView
             // 
             this.openConnectView.Name = "openConnectView";
-            this.openConnectView.Size = new System.Drawing.Size(152, 22);
+            this.openConnectView.Size = new System.Drawing.Size(257, 38);
             this.openConnectView.Text = "打开连接预览";
             this.openConnectView.Click += new System.EventHandler(this.openConnectView_Click);
             // 
@@ -118,25 +120,28 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 39);
+            this.dataGridView1.Location = new System.Drawing.Point(24, 78);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(483, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(966, 300);
             this.dataGridView1.TabIndex = 2;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 196);
+            this.pictureBox1.Location = new System.Drawing.Point(24, 392);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(294, 174);
+            this.pictureBox1.Size = new System.Drawing.Size(588, 348);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
             // ShowThumb
             // 
-            this.ShowThumb.Location = new System.Drawing.Point(312, 196);
+            this.ShowThumb.Location = new System.Drawing.Point(624, 392);
+            this.ShowThumb.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.ShowThumb.Name = "ShowThumb";
-            this.ShowThumb.Size = new System.Drawing.Size(75, 23);
+            this.ShowThumb.Size = new System.Drawing.Size(150, 46);
             this.ShowThumb.TabIndex = 4;
             this.ShowThumb.Text = "显示缩略图";
             this.ShowThumb.UseVisualStyleBackColor = true;
@@ -144,14 +149,15 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(509, 404);
+            this.ClientSize = new System.Drawing.Size(1018, 808);
             this.Controls.Add(this.ShowThumb);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
