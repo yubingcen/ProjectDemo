@@ -54,6 +54,7 @@ namespace ProjectDemo
             this.Controls.Add(this.show1);
             this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "ShowConnect";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ShowConnect";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CloseRender);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
