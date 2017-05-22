@@ -27,7 +27,7 @@ namespace ProjectDemo
         System.Data.DataTable cabledt = new System.Data.DataTable();
         //保存文件
         string excelFile;
-        string dwgFile;
+        string dwgFile=null;
         // form1加载时给表格加载数据
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -58,7 +58,6 @@ namespace ProjectDemo
                 if (string.Equals(exName, ".dwg"))
                 {
                     dwgFile = file.FileName;
-                    MessageBox.Show(dwgFile);
                 }
                 else
                 {
@@ -136,15 +135,21 @@ namespace ProjectDemo
         private void ExportCAD_Click(object sender, EventArgs e)
         {
             OperateDWG operate = new OperateDWG();
-            operate.exprotCAD();
-
+            operate.exprotCAD(dwgFile);
         }
 
         private void ShowThumb_Click(object sender, EventArgs e)
         {
-            ViewDWG viewDwg = new ViewDWG();
-            // string path = "d:\\毕设资料\\CAD二次开发\\XXXXDCW04-3000-00.dwg";
-            pictureBox1.Image = viewDwg.ShowDWG(100,200, dwgFile);
+            if (dwgFile != null)
+            {
+                ViewDWG viewDwg = new ViewDWG();
+                // string path = "d:\\毕设资料\\CAD二次开发\\XXXXDCW04-3000-00.dwg";
+                pictureBox1.Image = viewDwg.ShowDWG(100, 200, dwgFile);
+            }
+            else
+            {
+                MessageBox.Show("请先读取CAD文件");
+            }
         }
 
         private void readExcel_Click(object sender, EventArgs e)
@@ -235,6 +240,18 @@ namespace ProjectDemo
             }
         }
 
+        private void openInCAD_Click(object sender, EventArgs e)
+        {
+            if (dwgFile != null)
+            {
+                OperateDWG operate = new OperateDWG();
+                operate.openDWG(dwgFile);
+            }
+            else
+            {
+                MessageBox.Show("请先读取CAD文件");
+            }
+        }
     }
 }
 

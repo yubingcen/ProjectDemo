@@ -15,6 +15,7 @@ using Teigha.Runtime;
 using Microsoft.Office.Interop.Word;
 using Teigha.Geometry;
 using Autodesk.AutoCAD.Interop;
+
 using System.Runtime.InteropServices;
 
 namespace ProjectDemo
@@ -23,12 +24,11 @@ namespace ProjectDemo
     class OperateDWG
     {
         static object miss = System.Reflection.Missing.Value;
-        public void exprotCAD()
+        public void exprotCAD(string o_cadFile)
         {
-            object filepath = "c:\\test\\1.docx";
+            object filepath = "c:\\test\\export.docx";
 
-            string o_cadFile = "c:\\test\\test.dwg";
-            // object o_cadFile = (object)filepath;
+            //string o_cadFile = "c:\\test\\test.dwg";
             Teigha.Runtime.Services trs = new Services();
 
             Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
@@ -138,31 +138,31 @@ namespace ProjectDemo
 
         }
 
-        //public static void openDWG(string dwgpath)
-        //{
-        //    const string progID = "AutoCAD.Application.18.2";
-        //    AcadApplication acApp = null;
-        //    try
-        //    {
-        //        acApp = (AcadApplication)Marshal.GetActiveObject(progID);
-        //    }
-        //    catch
-        //    {
-        //        try
-        //        {
-        //            Type acType = Type.GetTypeFromProgID(progID);
-        //            acApp = (AcadApplication)Activator.CreateInstance(acType, true);
-        //        }
-        //        catch
-        //        {
-
-        //        }
-        //    }
-        //    if (acApp != null)
-        //    {
-        //        acApp.Documents.Open(dwgpath,null,null);
-        //        acApp.Visible = true;
-        //    }
-        //}
+        public void openDWG(string dwgpath)
+        {
+            const string progID = "AutoCAD.Application.18.0";
+            AcadApplication acApp = null;
+            try
+            {
+                acApp = (AcadApplication)Marshal.GetActiveObject(progID);
+            }
+            catch
+            {
+                try
+                {
+                    Type acType = Type.GetTypeFromProgID(progID);
+                    acApp = (AcadApplication)Activator.CreateInstance(acType, true);
+                }
+                catch
+                {
+                }
+            }
+            if (acApp != null)
+            {
+                MessageBox.Show(dwgpath);
+                acApp.Documents.Open(dwgpath);
+                acApp.Visible = true;
+            }
+        }
     }
 }
