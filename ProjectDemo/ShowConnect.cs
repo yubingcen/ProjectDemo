@@ -293,9 +293,32 @@ namespace ProjectDemo
             }
         }
 
+        // 重置视角
+        private void ResetPerspective_Click(object sender, EventArgs e)
+        {
+            CamPostion = new Vector3(0, 30, -100);//定义摄像机位置
+            SetupCamera();
+        }
+
+        //退出
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            DialogResult result;
+            result = MessageBox.Show("确定退出程序吗？", "退出", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                running = false;
+                Application.ExitThread();
+            }
+            else
+            {
+                // e.Cancel = true;
+            }
+        }
+
         private void CloseRender(object sender, FormClosingEventArgs e)
         {
-            
+
             DialogResult result;
             result = MessageBox.Show("确定退出吗？", "退出", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
@@ -309,7 +332,8 @@ namespace ProjectDemo
             }
         }
 
-        private void show1_Click(object sender, EventArgs e)
+        // 开始渲染
+        private void LoadingModel_Click(object sender, EventArgs e)
         {
             running = true;
             while (running) //设置一个循环用于实时更新渲染状态
