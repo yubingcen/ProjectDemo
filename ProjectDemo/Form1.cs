@@ -134,8 +134,15 @@ namespace ProjectDemo
 
         private void ExportCAD_Click(object sender, EventArgs e)
         {
-            OperateDWG operate = new OperateDWG();
-            operate.exprotCAD(dwgFile);
+            if (dwgFile != null)
+            {
+                OperateDWG operate = new OperateDWG();
+                operate.exprotCAD(dwgFile);
+            }
+            else
+            {
+                MessageBox.Show("请先读取CAD文件");
+            }
         }
 
         private void ShowThumb_Click(object sender, EventArgs e)
