@@ -14,6 +14,8 @@ namespace ProjectDemo
 {
     public partial class ShowConnect : Form
     {
+        //开始渲染
+        Boolean running = false;
         //Microsoft.DirectX.Direct3D.Device  device;
         #region
         //保存3D文件
@@ -291,9 +293,26 @@ namespace ProjectDemo
             }
         }
 
+        private void CloseRender(object sender, FormClosingEventArgs e)
+        {
+            
+            DialogResult result;
+            result = MessageBox.Show("确定退出吗？", "退出", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                running = false;
+                Application.ExitThread();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+
         private void show1_Click(object sender, EventArgs e)
         {
-            while (true) //设置一个循环用于实时更新渲染状态
+            running = true;
+            while (running) //设置一个循环用于实时更新渲染状态
             {
                 Render();
                 Application.DoEvents(); //处理键盘鼠标等输入事件

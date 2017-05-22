@@ -252,6 +252,20 @@ namespace ProjectDemo
                 MessageBox.Show("请先读取CAD文件");
             }
         }
+
+        private void Eixt(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result;
+            result = MessageBox.Show("确定退出程序吗？", "退出", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
+            {
+                Application.ExitThread();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }
 

@@ -37,9 +37,10 @@ namespace ProjectDemo
             // 
             // show1
             // 
-            this.show1.Location = new System.Drawing.Point(12, 12);
+            this.show1.Location = new System.Drawing.Point(24, 24);
+            this.show1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.show1.Name = "show1";
-            this.show1.Size = new System.Drawing.Size(75, 23);
+            this.show1.Size = new System.Drawing.Size(150, 46);
             this.show1.TabIndex = 2;
             this.show1.Text = "加载线缆头";
             this.show1.UseVisualStyleBackColor = true;
@@ -47,12 +48,14 @@ namespace ProjectDemo
             // 
             // ShowConnect
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1026, 625);
+            this.ClientSize = new System.Drawing.Size(2052, 1250);
             this.Controls.Add(this.show1);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "ShowConnect";
             this.Text = "ShowConnect";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CloseRender);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.OnMouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnMouseUp);
