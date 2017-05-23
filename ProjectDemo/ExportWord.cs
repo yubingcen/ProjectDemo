@@ -4,15 +4,16 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Word = Microsoft.Office.Interop.Word;
+using Microsoft.Office.Interop.Word;
 
 
 namespace ProjectDemo
 {
     class ExportWord
     {
-        public void ExportDataTableToWord(DataTable srcDgv, SaveFileDialog sfile)
+        public void ExportDataTableToWord(System.Data.DataTable srcDgv, SaveFileDialog sfile)
         {
+            killWinWordProcess();
             if (srcDgv.Rows.Count == 0)
             {
                 MessageBox.Show("没有数据可供导出！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -30,8 +31,19 @@ namespace ProjectDemo
                     Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
                     Microsoft.Office.Interop.Word.Document document = wordApp.Documents.Add(ref none, ref none, ref none, ref none);
 
-                    //建立表格
-                    Microsoft.Office.Interop.Word.Table table = document.Tables.Add(document.Paragraphs.Last.Range, srcDgv.Rows.Count+1, srcDgv.Columns.Count, ref none, ref none);
+                    //搜索书签
+                    foreach (Microsoft.Office.Interop.Word.Bookmark bm in document.Bookmarks)
+                    {
+                        if (bm.Name == "BookMark_Date")
+                        {
+                            bm.Select();
+
+                            bm.Range.Text = "2008";//ViewState["FK_ProdurcePlanID"].ToString();  
+                        }
+                    }
+
+                        //建立表格
+                        Microsoft.Office.Interop.Word.Table table = document.Tables.Add(document.Paragraphs.Last.Range, srcDgv.Rows.Count+1, srcDgv.Columns.Count, ref none, ref none);
                     try
                     {
                         for (int i = 0; i < srcDgv.Columns.Count; i++)//输出标题
@@ -57,6 +69,20 @@ namespace ProjectDemo
                         MessageBox.Show(e.Message, "提示", MessageBoxButtons.OK);
                     }
 
+                }
+            }
+        }
+
+        //杀死word
+        public void killWinWordProcess()
+        {
+            System.Diagnostics.Process[] processes = System.Diagnostics.Process.GetProcessesByName("WINWORD");
+            foreach (System.Diagnostics.Process process in processes)
+            {
+                bool b = process.MainWindowTitle == "";
+                if (process.MainWindowTitle == "")
+                {
+                    process.Kill();
                 }
             }
         }

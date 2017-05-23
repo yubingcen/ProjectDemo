@@ -24,7 +24,8 @@ namespace ProjectDemo
         //新建表
         System.Data.DataTable cabledt = new System.Data.DataTable();
         //保存文件名
-        string excelFile;
+        string excelFile=null;
+        string wordFile;
         string dwgFile=null;
 
         // form1加载时给表格加载数据
@@ -68,8 +69,16 @@ namespace ProjectDemo
         // 导出数据表数据到word
         private void exportWord_Click(object sender, EventArgs e)
         {
-            ExportWord export = new ExportWord();
-            export.ExportDataTableToWord(cabledt, saveFileDialog);
+            if (wordFile != null)
+            {
+                ExportWord export = new ExportWord();
+                export.ExportDataTableToWord(cabledt, saveFileDialog);
+            }
+            else
+            {
+                MessageBox.Show("请先导入模板文件");
+            }
+           
         }
 
         // 打开电缆头连接
@@ -82,8 +91,16 @@ namespace ProjectDemo
         // 导出CAD文件到word
         private void ExportCAD_Click(object sender, EventArgs e)
         {
+            if (wordFile != null)
+            {
                 OperateDWG operate = new OperateDWG();
-                operate.exprotCAD(dwgFile);
+                operate.exprotCAD(dwgFile,wordFile);
+            }
+            else
+            {
+                MessageBox.Show("请先导入模板文件");
+            }
+                
         }
 
         // 显示缩略图
@@ -121,7 +138,25 @@ namespace ProjectDemo
             }
         }
 
-        
+        // 读取word模板
+        private void ReadWordModel_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog excelfile = new OpenFileDialog();
+            if (excelfile.ShowDialog() == DialogResult.OK)
+            {
+                string exName = Path.GetExtension(excelfile.FileName);
+                if (string.Equals(exName, ".docx") || string.Equals(exName, ".doc"))
+                {
+                    wordFile = excelfile.FileName;
+                    MessageBox.Show("模板导入成功");
+                }
+                else
+                {
+                    MessageBox.Show("请选择Word文件");
+                }
+            }
+        }
+
         // 在CAD中打开文件
         private void openInCAD_Click(object sender, EventArgs e)
         {
@@ -158,6 +193,7 @@ namespace ProjectDemo
                 // e.Cancel = true;
             }
         }
+
     }
 }
 

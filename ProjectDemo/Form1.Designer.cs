@@ -30,12 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.ReadWordModel = new System.Windows.Forms.ToolStripMenuItem();
             this.readExcel = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportCAD = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportWord = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportWord = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportCAD = new System.Windows.Forms.ToolStripMenuItem();
             this.线缆连接ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openConnectView = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -53,7 +55,8 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.文件ToolStripMenuItem,
+            this.fileMenuItem,
+            this.toolStripMenuItem2,
             this.线缆连接ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -61,52 +64,67 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // 文件ToolStripMenuItem
+            // fileMenuItem
             // 
-            this.文件ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openFile,
+            this.ReadWordModel,
             this.readExcel,
-            this.exportCAD,
-            this.exportWord,
             this.MenuExit});
-            this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
-            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.文件ToolStripMenuItem.Text = "文件";
+            this.fileMenuItem.Name = "fileMenuItem";
+            this.fileMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.fileMenuItem.Text = "文件";
             // 
             // openFile
             // 
             this.openFile.Name = "openFile";
-            this.openFile.Size = new System.Drawing.Size(177, 22);
+            this.openFile.Size = new System.Drawing.Size(181, 22);
             this.openFile.Text = "读取CAD文件";
             this.openFile.Click += new System.EventHandler(this.openFile_Click);
+            // 
+            // ReadWordModel
+            // 
+            this.ReadWordModel.Name = "ReadWordModel";
+            this.ReadWordModel.Size = new System.Drawing.Size(181, 22);
+            this.ReadWordModel.Text = "读取Word模板文件";
+            this.ReadWordModel.Click += new System.EventHandler(this.ReadWordModel_Click);
             // 
             // readExcel
             // 
             this.readExcel.Name = "readExcel";
-            this.readExcel.Size = new System.Drawing.Size(177, 22);
+            this.readExcel.Size = new System.Drawing.Size(181, 22);
             this.readExcel.Text = "读取Excel文件数据";
             this.readExcel.Click += new System.EventHandler(this.readExcel_Click);
-            // 
-            // exportCAD
-            // 
-            this.exportCAD.Name = "exportCAD";
-            this.exportCAD.Size = new System.Drawing.Size(177, 22);
-            this.exportCAD.Text = "导出CAD";
-            this.exportCAD.Click += new System.EventHandler(this.ExportCAD_Click);
-            // 
-            // exportWord
-            // 
-            this.exportWord.Name = "exportWord";
-            this.exportWord.Size = new System.Drawing.Size(177, 22);
-            this.exportWord.Text = "导出Word";
-            this.exportWord.Click += new System.EventHandler(this.exportWord_Click);
             // 
             // MenuExit
             // 
             this.MenuExit.Name = "MenuExit";
-            this.MenuExit.Size = new System.Drawing.Size(177, 22);
+            this.MenuExit.Size = new System.Drawing.Size(181, 22);
             this.MenuExit.Text = "退出";
             this.MenuExit.Click += new System.EventHandler(this.MenuExit_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportWord,
+            this.exportCAD});
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(44, 21);
+            this.toolStripMenuItem2.Text = "导出";
+            // 
+            // exportWord
+            // 
+            this.exportWord.Name = "exportWord";
+            this.exportWord.Size = new System.Drawing.Size(152, 22);
+            this.exportWord.Text = "导出表格数据";
+            this.exportWord.Click += new System.EventHandler(this.exportWord_Click);
+            // 
+            // exportCAD
+            // 
+            this.exportCAD.Name = "exportCAD";
+            this.exportCAD.Size = new System.Drawing.Size(152, 22);
+            this.exportCAD.Text = "导出CAD图纸";
+            this.exportCAD.Click += new System.EventHandler(this.ExportCAD_Click);
             // 
             // 线缆连接ToolStripMenuItem
             // 
@@ -119,7 +137,7 @@
             // openConnectView
             // 
             this.openConnectView.Name = "openConnectView";
-            this.openConnectView.Size = new System.Drawing.Size(148, 22);
+            this.openConnectView.Size = new System.Drawing.Size(152, 22);
             this.openConnectView.Text = "打开连接预览";
             this.openConnectView.Click += new System.EventHandler(this.openConnectView_Click);
             // 
@@ -194,20 +212,22 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fileMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openFile;
         private System.Windows.Forms.ToolStripMenuItem readExcel;
-        private System.Windows.Forms.ToolStripMenuItem exportWord;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolStripMenuItem 线缆连接ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openConnectView;
-        private System.Windows.Forms.ToolStripMenuItem exportCAD;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button ShowThumb;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem MenuExit;
+        private System.Windows.Forms.ToolStripMenuItem ReadWordModel;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem exportWord;
+        private System.Windows.Forms.ToolStripMenuItem exportCAD;
     }
 }
 

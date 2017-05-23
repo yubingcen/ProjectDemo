@@ -24,7 +24,7 @@ namespace ProjectDemo
     class OperateDWG
     {
         static object miss = System.Reflection.Missing.Value;
-        public void exprotCAD(string o_cadFile)
+        public void exprotCAD(string o_cadFile, string file)
         {
             if (o_cadFile == null)
             {
@@ -32,7 +32,7 @@ namespace ProjectDemo
                 return;
             }
 
-            object filepath = "c:\\test\\export.docx";
+            object filepath = file;
 
             //string o_cadFile = "c:\\test\\test.dwg";
             Teigha.Runtime.Services trs = new Services();
@@ -46,6 +46,20 @@ namespace ProjectDemo
             doc = wordApp.Documents.Open(ref filepath, ref miss, ref miss, ref miss
                                                                    , ref miss, ref miss, ref miss, ref miss, ref miss
                                                                    , ref miss, ref miss, ref miss, ref miss);
+            //搜索书签
+            Boolean find = false;
+            foreach (Microsoft.Office.Interop.Word.Bookmark bm in doc.Bookmarks)
+            {
+                if (bm.Name == "ccc")
+                {
+                    find = true;
+                }
+            }
+            if (!find)
+            {
+                MessageBox.Show("模板有误，请选择正确的模板");
+                return;
+            }
             if (!File.Exists(o_cadFile))
                 return;
             Database db = new Database(false, true);//CAD Database,CAD数据库
