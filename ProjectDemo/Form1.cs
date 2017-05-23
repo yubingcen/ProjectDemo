@@ -82,15 +82,8 @@ namespace ProjectDemo
         // 导出CAD文件到word
         private void ExportCAD_Click(object sender, EventArgs e)
         {
-            if (dwgFile != null)
-            {
                 OperateDWG operate = new OperateDWG();
                 operate.exprotCAD(dwgFile);
-            }
-            else
-            {
-                MessageBox.Show("请先读取CAD文件");
-            }
         }
 
         // 显示缩略图
@@ -132,15 +125,8 @@ namespace ProjectDemo
         // 在CAD中打开文件
         private void openInCAD_Click(object sender, EventArgs e)
         {
-            if (dwgFile != null)
-            {
                 OperateDWG operate = new OperateDWG();
                 operate.openDWG(dwgFile);
-            }
-            else
-            {
-                MessageBox.Show("请先读取CAD文件");
-            }
         }
 
         // 程序退出

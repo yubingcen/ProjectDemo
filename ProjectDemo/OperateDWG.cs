@@ -26,6 +26,12 @@ namespace ProjectDemo
         static object miss = System.Reflection.Missing.Value;
         public void exprotCAD(string o_cadFile)
         {
+            if (o_cadFile == null)
+            {
+                MessageBox.Show("请先读取CAD文件");
+                return;
+            }
+
             object filepath = "c:\\test\\export.docx";
 
             //string o_cadFile = "c:\\test\\test.dwg";
@@ -140,6 +146,12 @@ namespace ProjectDemo
 
         public void openDWG(string dwgpath)
         {
+            if (dwgpath == null)
+            {
+                MessageBox.Show("请先读取CAD文件");
+                return;
+            }
+            
             const string progID = "AutoCAD.Application.18.0";
             AcadApplication acApp = null;
             try
