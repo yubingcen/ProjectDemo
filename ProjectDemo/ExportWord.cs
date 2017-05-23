@@ -31,7 +31,7 @@ namespace ProjectDemo
                     Microsoft.Office.Interop.Word.Document document = wordApp.Documents.Add(ref none, ref none, ref none, ref none);
 
                     //建立表格
-                    Microsoft.Office.Interop.Word.Table table = document.Tables.Add(document.Paragraphs.Last.Range, srcDgv.Rows.Count, srcDgv.Columns.Count, ref none, ref none);
+                    Microsoft.Office.Interop.Word.Table table = document.Tables.Add(document.Paragraphs.Last.Range, srcDgv.Rows.Count+1, srcDgv.Columns.Count, ref none, ref none);
                     try
                     {
                         for (int i = 0; i < srcDgv.Columns.Count; i++)//输出标题
