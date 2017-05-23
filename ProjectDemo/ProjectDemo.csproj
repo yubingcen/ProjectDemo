@@ -106,6 +106,12 @@
     <Compile Include="ShowConnect.Designer.cs">
       <DependentUpon>ShowConnect.cs</DependentUpon>
     </Compile>
+    <Compile Include="SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewDWG.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -206,6 +212,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ico_64X64.ico" />
+    <None Include="Resources\SplashScreen.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
