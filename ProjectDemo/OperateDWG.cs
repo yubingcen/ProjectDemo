@@ -155,7 +155,7 @@ namespace ProjectDemo
             doc.Close();
             wordApp.Quit();
             trs.Dispose();
-
+            MessageBox.Show("导出成功");
         }
 
         public void openDWG(string dwgpath)
@@ -188,6 +188,10 @@ namespace ProjectDemo
                 MessageBox.Show(dwgpath);
                 acApp.Documents.Open(dwgpath);
                 acApp.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("打开失败");
             }
         }
     }

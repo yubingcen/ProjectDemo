@@ -58,6 +58,7 @@ namespace ProjectDemo
                 if (string.Equals(exName, ".dwg"))
                 {
                     dwgFile = file.FileName;
+                    MessageBox.Show("CAD文件读取成功");
                 }
                 else
                 {

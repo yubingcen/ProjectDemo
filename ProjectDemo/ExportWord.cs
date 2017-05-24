@@ -71,6 +71,7 @@ namespace ProjectDemo
                         document.SaveAs(ref path, ref none, ref none, ref none, ref none, ref none, ref none, ref none, ref none, ref none, ref none, ref none, ref none, ref none, ref none, ref none);
 
                         MessageBox.Show("数据已经成功导出到：" + filePath, "导出完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        killWinWordProcess();
                     }
                     catch (System.Exception e)
                     {
