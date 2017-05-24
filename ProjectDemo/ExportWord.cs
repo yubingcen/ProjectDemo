@@ -11,6 +11,8 @@ namespace ProjectDemo
 {
     class ExportWord
     {
+        static object miss = System.Reflection.Missing.Value;
+
         public void ExportDataTableToWord(System.Data.DataTable srcDgv, string filePath)
         {
             killWinWordProcess();
@@ -26,21 +28,30 @@ namespace ProjectDemo
                     object path = filePath;
                     Object none = System.Reflection.Missing.Value;
                     Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
-                    Microsoft.Office.Interop.Word.Document document = wordApp.Documents.Add(ref none, ref none, ref none, ref none);
-
+                    Document document = wordApp.Documents.Open(ref path, ref miss, ref miss, ref miss
+                                                                           , ref miss, ref miss, ref miss, ref miss, ref miss
+                                                                           , ref miss, ref miss, ref miss, ref miss);
                     //搜索书签
+                    Boolean find = false;
                     foreach (Microsoft.Office.Interop.Word.Bookmark bm in document.Bookmarks)
                     {
-                        if (bm.Name == "BookMark_Date")
+                        if (bm.Name == "data")
                         {
-                            bm.Select();
-
-                            bm.Range.Text = "2008";//ViewState["FK_ProdurcePlanID"].ToString();  
+                            find = true;
                         }
                     }
+                    if (!find)
+                    {
+                        MessageBox.Show("模板有误，请选择正确的模板");
+                        return;
+                    }
 
-                        //建立表格
-                        Microsoft.Office.Interop.Word.Table table = document.Tables.Add(document.Paragraphs.Last.Range, srcDgv.Rows.Count+1, srcDgv.Columns.Count, ref none, ref none);
+                    wordApp.Selection.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+                    object oStart = "data";
+                    Microsoft.Office.Interop.Word.Range range = document.Bookmarks.get_Item(ref oStart).Range;
+
+                    //建立表格
+                    Microsoft.Office.Interop.Word.Table table = document.Tables.Add(range, srcDgv.Rows.Count+1, srcDgv.Columns.Count, ref none, ref none);
                     try
                     {
                         for (int i = 0; i < srcDgv.Columns.Count; i++)//输出标题

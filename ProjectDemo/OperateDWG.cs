@@ -50,7 +50,7 @@ namespace ProjectDemo
             Boolean find = false;
             foreach (Microsoft.Office.Interop.Word.Bookmark bm in doc.Bookmarks)
             {
-                if (bm.Name == "ccc")
+                if (bm.Name == "cad")
                 {
                     find = true;
                 }
@@ -138,7 +138,7 @@ namespace ProjectDemo
             object link = false;
             object cadFile = (object)o_cadFile;
             wordApp.Selection.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
-            object oStart = "ccc";
+            object oStart = "cad";
             object range = (object)doc.Bookmarks.get_Item(ref oStart).Range;
 
             try
