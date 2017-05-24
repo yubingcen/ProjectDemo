@@ -72,7 +72,7 @@ namespace ProjectDemo
             if (wordFile != null)
             {
                 ExportWord export = new ExportWord();
-                export.ExportDataTableToWord(cabledt, saveFileDialog);
+                export.ExportDataTableToWord(cabledt, wordFile);
             }
             else
             {

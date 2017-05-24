@@ -11,7 +11,7 @@ namespace ProjectDemo
 {
     class ExportWord
     {
-        public void ExportDataTableToWord(System.Data.DataTable srcDgv, SaveFileDialog sfile)
+        public void ExportDataTableToWord(System.Data.DataTable srcDgv, string filePath)
         {
             killWinWordProcess();
             if (srcDgv.Rows.Count == 0)
@@ -21,12 +21,9 @@ namespace ProjectDemo
             }
             else
             {
-                sfile.AddExtension = true;
-                sfile.DefaultExt = ".doc";
-                sfile.Filter = "(*.doc)|*.doc";
-                if (sfile.ShowDialog() == DialogResult.OK)
+                if (filePath != null)
                 {
-                    object path = sfile.FileName;
+                    object path = filePath;
                     Object none = System.Reflection.Missing.Value;
                     Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
                     Microsoft.Office.Interop.Word.Document document = wordApp.Documents.Add(ref none, ref none, ref none, ref none);
@@ -62,7 +59,7 @@ namespace ProjectDemo
                         table.Borders.InsideLineStyle = Microsoft.Office.Interop.Word.WdLineStyle.wdLineStyleSingle;
                         document.SaveAs(ref path, ref none, ref none, ref none, ref none, ref none, ref none, ref none, ref none, ref none, ref none, ref none, ref none, ref none, ref none, ref none);
 
-                        MessageBox.Show("数据已经成功导出到：" + sfile.FileName.ToString(), "导出完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("数据已经成功导出到：" + filePath, "导出完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (System.Exception e)
                     {
