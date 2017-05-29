@@ -19,7 +19,7 @@ namespace ProjectDemo
             public short bfReserved2;
             public int bfOffBits;
         }
-        public static System.Drawing.Image GetDwgImage(string FileName)
+        public static System.Drawing.Image GetsDwgImage(string FileName)
         {
             if (!(File.Exists(FileName)))
             {
@@ -100,7 +100,7 @@ namespace ProjectDemo
                 {
                     //复制文件，继续预览
                     File.Copy(FileName, System.Windows.Forms.Application.StartupPath + @"/XXXXDCW04-3000-00.dwg", true);
-                    System.Drawing.Image image = GetDwgImage(System.Windows.Forms.Application.StartupPath + @"/XXXXDCW04-3000-00.dwg");
+                    System.Drawing.Image image = GetsDwgImage(System.Windows.Forms.Application.StartupPath + @"/XXXXDCW04-3000-00.dwg");
                     File.Delete(System.Windows.Forms.Application.StartupPath + @"/XXXXDCW04-3000-00.dwg");
                     return image;
                 }
@@ -132,11 +132,11 @@ namespace ProjectDemo
 
         public System.Drawing.Image ShowDWG(int Pwidth, int PHeight, string FilePath)
         {
-            System.Drawing.Image image = GetDwgImage(FilePath);
+            MessageBox.Show(FilePath);
+            System.Drawing.Image image = GetsDwgImage(FilePath);
             Bitmap bitmap = new Bitmap(image);
             int Height = bitmap.Height;
             int Width = bitmap.Width;
-            // MessageBox.Show("高" + Height + "宽" + Width + "设定高" + PHeight + "设定宽" + Pwidth);
             Bitmap newbitmap = new Bitmap(Width, Height);
             Bitmap oldbitmap = (Bitmap)bitmap;
             Color pixel;

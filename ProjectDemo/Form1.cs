@@ -111,7 +111,7 @@ namespace ProjectDemo
             {
                 ViewDWG viewDwg = new ViewDWG();
                 // string path = "d:\\毕设资料\\CAD二次开发\\XXXXDCW04-3000-00.dwg";
-                pictureBox1.Image = viewDwg.ShowDWG(100, 200, dwgFile);
+                pictureBox1.Image = viewDwg.ShowDWG(100,200,dwgFile);
             }
             else
             {
