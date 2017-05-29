@@ -32,9 +32,13 @@ namespace ProjectDemo
         private void Form1_Load(object sender, EventArgs e)
         {
             //定义表结构
-            cabledt.Columns.Add("线缆名", typeof(System.Int32));//列名  列所在数据类型
-            cabledt.Columns.Add("型号", typeof(System.String));
-            cabledt.Columns.Add("接口型号", typeof(System.String));
+            cabledt.Columns.Add("序号", typeof(System.Int32));//列名  列所在数据类型
+            cabledt.Columns.Add("电缆名称", typeof(System.String));
+            cabledt.Columns.Add("电缆图号", typeof(System.String));
+            cabledt.Columns.Add("单套数量", typeof(System.String));
+            cabledt.Columns.Add("连接器型号", typeof(System.String));
+            cabledt.Columns.Add("厂家", typeof(System.String));
+            cabledt.Columns.Add("备注", typeof(System.String));
             DataRow dr = cabledt.NewRow();   //行
             ////添加新行
             //for (int i = 0; i <= 3; i++)
