@@ -132,7 +132,6 @@ namespace ProjectDemo
 
         public System.Drawing.Image ShowDWG(int Pwidth, int PHeight, string FilePath)
         {
-            MessageBox.Show(FilePath);
             System.Drawing.Image image = GetDwgImage(FilePath);
             Bitmap bitmap = new Bitmap(image);
             int Height = bitmap.Height;
@@ -155,9 +154,9 @@ namespace ProjectDemo
                     newbitmap.SetPixel(x, y, Color.FromArgb(r, g, b));
                 }
             }
-            Bitmap bt = new Bitmap(newbitmap, Pwidth, PHeight);
+            Bitmap bt = new Bitmap(newbitmap, Width*2, Height*2);
 
-            return newbitmap;
+            return bt;
         }
     }
 }

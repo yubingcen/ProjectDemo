@@ -59,6 +59,15 @@ namespace ProjectDemo
                 {
                     dwgFile = file.FileName;
                     MessageBox.Show("CAD文件读取成功");
+                    if (dwgFile != null)
+                    {
+                        ViewDWG viewDwg = new ViewDWG();
+                        pictureBox1.Image = viewDwg.ShowDWG(400, 450, dwgFile);
+                    }
+                    else
+                    {
+                        MessageBox.Show("请先读取CAD文件");
+                    }
                 }
                 else
                 {
