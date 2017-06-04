@@ -40,6 +40,7 @@ namespace ProjectDemo
             this.加载ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LoadingModel = new System.Windows.Forms.ToolStripMenuItem();
             this.ResetPerspective = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoModel = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,13 +67,13 @@ namespace ProjectDemo
             // 保存连接ToolStripMenuItem
             // 
             this.保存连接ToolStripMenuItem.Name = "保存连接ToolStripMenuItem";
-            this.保存连接ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.保存连接ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.保存连接ToolStripMenuItem.Text = "保存连接";
             // 
             // Exit
             // 
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(152, 22);
+            this.Exit.Size = new System.Drawing.Size(124, 22);
             this.Exit.Text = "退出";
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
@@ -80,7 +81,8 @@ namespace ProjectDemo
             // 
             this.加载ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.LoadingModel,
-            this.ResetPerspective});
+            this.ResetPerspective,
+            this.autoModel});
             this.加载ToolStripMenuItem.Name = "加载ToolStripMenuItem";
             this.加载ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.加载ToolStripMenuItem.Text = "加载";
@@ -98,6 +100,13 @@ namespace ProjectDemo
             this.ResetPerspective.Size = new System.Drawing.Size(152, 22);
             this.ResetPerspective.Text = "重置视角";
             this.ResetPerspective.Click += new System.EventHandler(this.ResetPerspective_Click);
+            // 
+            // autoModel
+            // 
+            this.autoModel.Name = "autoModel";
+            this.autoModel.Size = new System.Drawing.Size(152, 22);
+            this.autoModel.Text = "自动模式";
+            this.autoModel.Click += new System.EventHandler(this.autoModel_Click);
             // 
             // ShowConnect
             // 
@@ -131,5 +140,7 @@ namespace ProjectDemo
         private ToolStripMenuItem 加载ToolStripMenuItem;
         private ToolStripMenuItem LoadingModel;
         private ToolStripMenuItem ResetPerspective;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem autoModel;
     }
 }

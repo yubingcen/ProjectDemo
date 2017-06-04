@@ -16,6 +16,7 @@ namespace ProjectDemo
     {
         //开始渲染
         Boolean running = false;
+        Boolean auto = false;
         //Microsoft.DirectX.Direct3D.Device  device;
         #region
         //保存3D文件
@@ -41,6 +42,7 @@ namespace ProjectDemo
         private bool isRotateByMouse = false;//记录是否由鼠标控制旋转
         private bool isMoveByMouse = false;//记录是否由鼠标控制移动
 
+        float angle = 0.01f;
         public ShowConnect()
         {
             InitializeComponent();
@@ -130,7 +132,7 @@ namespace ProjectDemo
         //绘制mesh的材质和纹理
         private void DrawMesh(float yaw, float pitch, float roll, float x, float y, float z)
         {
-            // angle += 0.01f;
+            angle += 0.01f;
             device.Transform.World = Matrix.RotationYawPitchRoll(yaw, pitch, roll) * Matrix.Translation(x, y, z);
             for (int i = 0; i < meshMaterials.Length; ++i)
             {
@@ -194,22 +196,28 @@ namespace ProjectDemo
             device.Transform.World = Matrix.Identity;
 
             // 可以自动旋转
-            //DrawMesh(angle / (float)Math.PI, angle / (float)Math.PI * 2.0f, angle / (float)Math.PI / 4.0f, 0.0f, 0.0f, 0.0f);
-
-            for (int num = 0; num < mesh.Length; num++)
+            if (auto)
             {
-                for (int i = 0; i < meshMaterials.Length; ++i)
-                {
-                    //设置材质
-                    device.Material = meshMaterials[i];
-                    //设置纹理
-                    device.SetTexture(0, meshTextures[i]);
-                }
-                //绘制
-                //设置当前世界矩阵
-                device.Transform.World = meshPosition[num];
-                mesh[num].DrawSubset(0);
+                DrawMesh(angle / (float)Math.PI, angle / (float)Math.PI * 2.0f, angle / (float)Math.PI / 4.0f, 0.0f, 0.0f, 0.0f);
             }
+            else {
+                for (int num = 0; num < mesh.Length; num++)
+                {
+                    for (int i = 0; i < meshMaterials.Length; ++i)
+                    {
+                        //设置材质
+                        device.Material = meshMaterials[i];
+                        //设置纹理
+                        device.SetTexture(0, meshTextures[i]);
+                    }
+                    //绘制
+                    //设置当前世界矩阵
+                    device.Transform.World = meshPosition[num];
+                    mesh[num].DrawSubset(0);
+                }
+            }
+
+           
 
             //mesh.DrawSubset(0);
             device.EndScene();
@@ -332,10 +340,16 @@ namespace ProjectDemo
             }
         }
 
+        private void autoModel_Click(object sender, EventArgs e)
+        {
+            auto = true;
+        }
+
         // 开始渲染
         private void LoadingModel_Click(object sender, EventArgs e)
         {
             running = true;
+            auto = false;
             while (running) //设置一个循环用于实时更新渲染状态
             {
                 Render();

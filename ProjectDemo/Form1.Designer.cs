@@ -59,8 +59,7 @@
             this.线缆连接ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(12, 4, 0, 4);
-            this.menuStrip1.Size = new System.Drawing.Size(1002, 43);
+            this.menuStrip1.Size = new System.Drawing.Size(512, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -72,34 +71,34 @@
             this.readExcel,
             this.MenuExit});
             this.fileMenuItem.Name = "fileMenuItem";
-            this.fileMenuItem.Size = new System.Drawing.Size(74, 35);
+            this.fileMenuItem.Size = new System.Drawing.Size(44, 21);
             this.fileMenuItem.Text = "文件";
             // 
             // openFile
             // 
             this.openFile.Name = "openFile";
-            this.openFile.Size = new System.Drawing.Size(320, 38);
+            this.openFile.Size = new System.Drawing.Size(181, 22);
             this.openFile.Text = "读取CAD文件";
             this.openFile.Click += new System.EventHandler(this.openFile_Click);
             // 
             // ReadWordModel
             // 
             this.ReadWordModel.Name = "ReadWordModel";
-            this.ReadWordModel.Size = new System.Drawing.Size(320, 38);
+            this.ReadWordModel.Size = new System.Drawing.Size(181, 22);
             this.ReadWordModel.Text = "读取Word模板文件";
             this.ReadWordModel.Click += new System.EventHandler(this.ReadWordModel_Click);
             // 
             // readExcel
             // 
             this.readExcel.Name = "readExcel";
-            this.readExcel.Size = new System.Drawing.Size(320, 38);
+            this.readExcel.Size = new System.Drawing.Size(181, 22);
             this.readExcel.Text = "读取Excel文件数据";
             this.readExcel.Click += new System.EventHandler(this.readExcel_Click);
             // 
             // MenuExit
             // 
             this.MenuExit.Name = "MenuExit";
-            this.MenuExit.Size = new System.Drawing.Size(320, 38);
+            this.MenuExit.Size = new System.Drawing.Size(181, 22);
             this.MenuExit.Text = "退出";
             this.MenuExit.Click += new System.EventHandler(this.MenuExit_Click);
             // 
@@ -109,20 +108,20 @@
             this.exportWord,
             this.exportCAD});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(74, 35);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(44, 21);
             this.toolStripMenuItem2.Text = "导出";
             // 
             // exportWord
             // 
             this.exportWord.Name = "exportWord";
-            this.exportWord.Size = new System.Drawing.Size(260, 38);
+            this.exportWord.Size = new System.Drawing.Size(149, 22);
             this.exportWord.Text = "导出表格数据";
             this.exportWord.Click += new System.EventHandler(this.exportWord_Click);
             // 
             // exportCAD
             // 
             this.exportCAD.Name = "exportCAD";
-            this.exportCAD.Size = new System.Drawing.Size(260, 38);
+            this.exportCAD.Size = new System.Drawing.Size(149, 22);
             this.exportCAD.Text = "导出CAD图纸";
             this.exportCAD.Click += new System.EventHandler(this.ExportCAD_Click);
             // 
@@ -131,13 +130,13 @@
             this.线缆连接ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openConnectView});
             this.线缆连接ToolStripMenuItem.Name = "线缆连接ToolStripMenuItem";
-            this.线缆连接ToolStripMenuItem.Size = new System.Drawing.Size(122, 35);
+            this.线缆连接ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.线缆连接ToolStripMenuItem.Text = "线缆连接";
             // 
             // openConnectView
             // 
             this.openConnectView.Name = "openConnectView";
-            this.openConnectView.Size = new System.Drawing.Size(257, 38);
+            this.openConnectView.Size = new System.Drawing.Size(148, 22);
             this.openConnectView.Text = "打开连接预览";
             this.openConnectView.Click += new System.EventHandler(this.openConnectView_Click);
             // 
@@ -148,28 +147,26 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(24, 78);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 39);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(966, 300);
+            this.dataGridView1.Size = new System.Drawing.Size(483, 150);
             this.dataGridView1.TabIndex = 2;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(24, 392);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 195);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(806, 469);
+            this.pictureBox1.Size = new System.Drawing.Size(483, 387);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(840, 392);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(420, 195);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 50);
+            this.button1.Size = new System.Drawing.Size(75, 25);
             this.button1.TabIndex = 5;
             this.button1.Text = "在CAD中打开";
             this.button1.UseVisualStyleBackColor = true;
@@ -177,16 +174,15 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1002, 886);
+            this.ClientSize = new System.Drawing.Size(512, 541);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "电缆设计管理软件";
