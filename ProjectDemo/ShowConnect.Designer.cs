@@ -35,12 +35,13 @@ namespace ProjectDemo
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.保存连接ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.connect_click = new System.Windows.Forms.ToolStripMenuItem();
             this.Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.加载ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LoadingModel = new System.Windows.Forms.ToolStripMenuItem();
             this.ResetPerspective = new System.Windows.Forms.ToolStripMenuItem();
             this.autoModel = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,22 +59,23 @@ namespace ProjectDemo
             // 操作ToolStripMenuItem
             // 
             this.操作ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.保存连接ToolStripMenuItem,
+            this.connect_click,
             this.Exit});
             this.操作ToolStripMenuItem.Name = "操作ToolStripMenuItem";
             this.操作ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.操作ToolStripMenuItem.Text = "操作";
             // 
-            // 保存连接ToolStripMenuItem
+            // connect_click
             // 
-            this.保存连接ToolStripMenuItem.Name = "保存连接ToolStripMenuItem";
-            this.保存连接ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.保存连接ToolStripMenuItem.Text = "保存连接";
+            this.connect_click.Name = "connect_click";
+            this.connect_click.Size = new System.Drawing.Size(141, 22);
+            this.connect_click.Text = "连接/下一组";
+            this.connect_click.Click += new System.EventHandler(this.connect_click_Click);
             // 
             // Exit
             // 
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(124, 22);
+            this.Exit.Size = new System.Drawing.Size(141, 22);
             this.Exit.Text = "退出";
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
@@ -90,29 +92,39 @@ namespace ProjectDemo
             // LoadingModel
             // 
             this.LoadingModel.Name = "LoadingModel";
-            this.LoadingModel.Size = new System.Drawing.Size(152, 22);
+            this.LoadingModel.Size = new System.Drawing.Size(124, 22);
             this.LoadingModel.Text = "加载模型";
             this.LoadingModel.Click += new System.EventHandler(this.LoadingModel_Click);
             // 
             // ResetPerspective
             // 
             this.ResetPerspective.Name = "ResetPerspective";
-            this.ResetPerspective.Size = new System.Drawing.Size(152, 22);
+            this.ResetPerspective.Size = new System.Drawing.Size(124, 22);
             this.ResetPerspective.Text = "重置视角";
             this.ResetPerspective.Click += new System.EventHandler(this.ResetPerspective_Click);
             // 
             // autoModel
             // 
             this.autoModel.Name = "autoModel";
-            this.autoModel.Size = new System.Drawing.Size(152, 22);
+            this.autoModel.Size = new System.Drawing.Size(124, 22);
             this.autoModel.Text = "自动模式";
             this.autoModel.Click += new System.EventHandler(this.autoModel_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(512, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 12);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "连接测试未开始";
             // 
             // ShowConnect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(681, 370);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -135,12 +147,13 @@ namespace ProjectDemo
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem 操作ToolStripMenuItem;
-        private ToolStripMenuItem 保存连接ToolStripMenuItem;
+        private ToolStripMenuItem connect_click;
         private ToolStripMenuItem Exit;
         private ToolStripMenuItem 加载ToolStripMenuItem;
         private ToolStripMenuItem LoadingModel;
         private ToolStripMenuItem ResetPerspective;
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem autoModel;
+        private Label label1;
     }
 }

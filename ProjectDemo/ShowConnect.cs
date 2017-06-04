@@ -17,6 +17,7 @@ namespace ProjectDemo
         //开始渲染
         Boolean running = false;
         Boolean auto = false;
+        Boolean connect = false;
         //Microsoft.DirectX.Direct3D.Device  device;
         #region
         //保存3D文件
@@ -25,11 +26,14 @@ namespace ProjectDemo
         private Device device = null;
         //材质
         private Material[] meshMaterials;
+
         //纹理
         private Texture[] meshTextures;
         //定义模型网格的位置
         private Matrix[] meshPosition;
-
+        //球绘制的位置
+        private Matrix[] objPosition;
+        private int group = 0;
         //获取当前程序的Debug路径
         string path = System.Windows.Forms.Application.StartupPath;
         //角度
@@ -42,6 +46,7 @@ namespace ProjectDemo
         private bool isRotateByMouse = false;//记录是否由鼠标控制旋转
         private bool isMoveByMouse = false;//记录是否由鼠标控制移动
 
+        Mesh[] obj;
         float angle = 0.01f;
         public ShowConnect()
         {
@@ -69,10 +74,48 @@ namespace ProjectDemo
 
             //创建两个模型
             mesh = new Mesh[2];
+            obj = new Mesh[20];
             //定义位置
             meshPosition = new Matrix[2];
             meshPosition[0] = Matrix.Translation(-20f, 0f, 0f);
             meshPosition[1] = Matrix.Translation(20f, 0f, 0f);
+
+            objPosition = new Matrix[30];
+            // 第一层
+            objPosition[0] = Matrix.Translation(-24f, 0.2f, 2f);
+            objPosition[1] = Matrix.Translation(16f, 0.2f, 2f);
+            objPosition[2] = Matrix.Translation(-22f, 0.2f, 2f);
+            objPosition[3] = Matrix.Translation(18f, 0.2f, 2f);
+            objPosition[4] = Matrix.Translation(-20f, 0.2f, 2f);
+            objPosition[5] = Matrix.Translation(20f, 0.2f, 2f);
+            objPosition[6] = Matrix.Translation(-18f, 0.2f, 2f);
+            objPosition[7] = Matrix.Translation(22f, 0.2f, 2f);
+            objPosition[8] = Matrix.Translation(-16f, 0.2f, 2f);
+            objPosition[9] = Matrix.Translation(24f, 0.2f, 2f);
+            // 第二层
+            objPosition[10] = Matrix.Translation(-25f, 0.2f, 0f);
+            objPosition[11] = Matrix.Translation(15f, 0.2f, 0f);
+            objPosition[12] = Matrix.Translation(-23f, 0.2f, 0f);
+            objPosition[13] = Matrix.Translation(17f, 0.2f, 0f);
+            objPosition[14] = Matrix.Translation(-21f, 0.2f, 0f);
+            objPosition[15] = Matrix.Translation(19f, 0.2f, 0f);
+            objPosition[16] = Matrix.Translation(-19f, 0.2f, 0f);
+            objPosition[17] = Matrix.Translation(21f, 0.2f, 0f);
+            objPosition[18] = Matrix.Translation(-17f, 0.2f, 0f);
+            objPosition[19] = Matrix.Translation(23f, 0.2f, 0f);
+            // 第三层
+            objPosition[20] = Matrix.Translation(-24f, 0.2f, -2f);
+            objPosition[21] = Matrix.Translation(16f, 0.2f, -2f);
+            objPosition[22] = Matrix.Translation(-22f, 0.2f, -2f);
+            objPosition[23] = Matrix.Translation(18f, 0.2f, -2f);
+            objPosition[24] = Matrix.Translation(-20f, 0.2f, -2f);
+            objPosition[25] = Matrix.Translation(20f, 0.2f, -2f);
+            objPosition[26] = Matrix.Translation(-18f, 0.2f, -2f);
+            objPosition[27] = Matrix.Translation(22f, 0.2f, -2f);
+            objPosition[28] = Matrix.Translation(-16f, 0.2f, -2f);
+            objPosition[29] = Matrix.Translation(24f, 0.2f, -2f);
+            obj[0] = Mesh.Sphere(device, 0.9f, 20, 20);//定义球体对象
+            obj[1] = Mesh.Sphere(device, 0.9f, 20, 20);//定义球体对象
 
             //我的3D文件在Debug中的Model文件中，因此temp获取了3D模型的地址
             string temp = path;
@@ -151,7 +194,6 @@ namespace ProjectDemo
                 return;
             SetupCamera();
             device.Clear(ClearFlags.Target | ClearFlags.ZBuffer, Color.DarkSlateBlue, 1.0f, 1);
-            //device.Clear(ClearFlags.Target, System.Drawing.Color.Black, 1.0f, 0);
             device.BeginScene();
 
             // 灯光
@@ -183,8 +225,6 @@ namespace ProjectDemo
             device.RenderState.CullMode = Cull.None;
 
             Material boxMaterial = new Material();
-            //boxMaterial.Ambient = Color.Pink;
-            //boxMaterial.Diffuse = Color.White;
             boxMaterial.Ambient = Color.FromArgb(0, 10, 10, 10);//设置环境光 
             boxMaterial.Diffuse = Color.LightGreen;//设置漫反射 
             boxMaterial.Emissive = Color.FromArgb(0, 0, 0, 0);//设置自发光 
@@ -215,6 +255,16 @@ namespace ProjectDemo
                     device.Transform.World = meshPosition[num];
                     mesh[num].DrawSubset(0);
                 }
+                if (connect)
+                {
+                    for (int num = group-2; num < group; num++)
+                    {
+                        device.Transform.World = objPosition[num];
+                        obj[0].DrawSubset(0);
+                        obj[1].DrawSubset(0);
+                    }
+                }
+
             }
 
            
@@ -345,11 +395,25 @@ namespace ProjectDemo
             auto = true;
         }
 
+        private void connect_click_Click(object sender, EventArgs e)
+        {
+            connect = true;
+            group += 2;
+            if (group>30)
+            {
+                group = 2;
+            }
+            label1.Text = "线孔" + (group == 0 ? 1: (group/2)) + "  ----->  " + "线孔" + (group == 0 ? 1 : (group / 2));
+        }
+
         // 开始渲染
         private void LoadingModel_Click(object sender, EventArgs e)
         {
             running = true;
             auto = false;
+            group = 0;
+            connect = false;
+            label1.Text = "连接测试未开始";
             while (running) //设置一个循环用于实时更新渲染状态
             {
                 Render();
