@@ -165,34 +165,22 @@ namespace ProjectDemo
                 MessageBox.Show("请先读取CAD文件");
                 return;
             }
-            
+
             const string progID = "AutoCAD.Application.18.0";
-            AcadApplication acApp = null;
+            AcadApplication AcadApp;
+            AcadDocument AcadDoc;
             try
             {
-                acApp = (AcadApplication)Marshal.GetActiveObject(progID);
+                AcadApp = (AcadApplication)Marshal.GetActiveObject(progID);
+                AcadDoc = AcadApp.ActiveDocument;
             }
             catch
             {
-                try
-                {
-                    Type acType = Type.GetTypeFromProgID(progID);
-                    acApp = (AcadApplication)Activator.CreateInstance(acType, true);
-                }
-                catch
-                {
-                }
+                AcadApp = new AcadApplication();
+                AcadDoc = AcadApp.Documents.Open(dwgpath, null, null);
             }
-            if (acApp != null)
-            {
-                MessageBox.Show(dwgpath);
-                acApp.Documents.Open(dwgpath);
-                acApp.Visible = true;
-            }
-            else
-            {
-                MessageBox.Show("打开失败");
-            }
+            AcadApp.Application.Visible = true;
+            Microsoft.VisualBasic.Interaction.AppActivate(AcadApp.Caption);
         }
     }
 }
