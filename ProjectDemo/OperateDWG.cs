@@ -34,14 +34,12 @@ namespace ProjectDemo
 
             object filepath = file;
 
-            //string o_cadFile = "c:\\test\\test.dwg";
             Teigha.Runtime.Services trs = new Services();
 
             Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
             wordApp = new Microsoft.Office.Interop.Word.Application();
             wordApp.DisplayAlerts = WdAlertLevel.wdAlertsNone;
 
-            //wordApp.ActiveDocument.Bookmarks.get_Item(ref bkObj).Select();
             Document doc = null;
             doc = wordApp.Documents.Open(ref filepath, ref miss, ref miss, ref miss
                                                                    , ref miss, ref miss, ref miss, ref miss, ref miss
@@ -129,12 +127,10 @@ namespace ProjectDemo
             }
             if (acApp != null)
             {
-                //acApp.Visible = false;
                 acApp.Height = 500 + 55;
                 acApp.Width = (int)(500 * (x1 - x0) / (y1 - y0));
                 acApp.Quit();
             }
-            //object Nothing = System.Reflection.Missing.Value;
             object link = false;
             object cadFile = (object)o_cadFile;
             wordApp.Selection.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;

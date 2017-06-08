@@ -267,9 +267,6 @@ namespace ProjectDemo
 
             }
 
-           
-
-            //mesh.DrawSubset(0);
             device.EndScene();
             device.Present();
         }
