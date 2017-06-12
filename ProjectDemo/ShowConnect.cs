@@ -394,6 +394,9 @@ namespace ProjectDemo
 
         private void connect_click_Click(object sender, EventArgs e)
         {
+            if (!running || (running && auto)) {
+                return;
+            }
             connect = true;
             group += 2;
             if (group>30)
